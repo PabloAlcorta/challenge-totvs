@@ -1,0 +1,20 @@
+<div class="containerSearch">
+	<input 
+		type="text" 
+		class="inputSearch" 
+		placeholder="Search"
+		name="search"
+		[(ngModel)]="search"
+        [matAutocomplete]="auto"
+        (keyup)="_search($event.keyCode)"
+    >
+    <div class="containerSearchIcon">
+    	<mat-icon>search</mat-icon>
+    </div>
+	<mat-autocomplete #auto="matAutocomplete">
+		<mat-option *ngFor="let result of results" [value]="result">
+		  {{result}}
+		</mat-option>
+	</mat-autocomplete>
+</div>
+<app-curve></app-curve>
