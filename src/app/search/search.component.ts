@@ -22,9 +22,9 @@ export class SearchComponent implements OnInit {
 
   _search(parameter: number) {
   	let exclusions = [37,38,39,40,13]; //para omitir flechas y enter
-    if (exclusions.findIndex(e=>e==parameter) == -1 && this.search.trim() != '') {
-    	clearTimeout(this.interval);
-    	this.interval = setTimeout(()=>{
+  	clearTimeout(this.interval);
+   	this.interval = setTimeout(()=>{
+      if (exclusions.findIndex(e=>e==parameter) == -1 && this.search.trim() != '') {
     		this.loading=true;
 	  		this.resultsService.getPosts()
 	  		.subscribe(posts=>{
@@ -33,11 +33,13 @@ export class SearchComponent implements OnInit {
 	  			)
 	  			this.loading=false;
 	  		})
-    	},1500);
-    }
+      }
+   	},1000);
   }
 
   selectResult(i:number) {
-    this.results = [this.results[i]];
+    this.results = this.results.filter(
+                      result=>result.title.toLowerCase().includes(this.results[i].title.toLowerCase())
+                    )
   }
 }
