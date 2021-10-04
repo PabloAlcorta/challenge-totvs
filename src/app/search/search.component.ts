@@ -14,6 +14,7 @@ export class SearchComponent implements OnInit {
   results: Post[] = [];
   interval:any;
   loading:boolean=false;
+  resultsToCards: Post[]=[];
 
   constructor(private resultsService: ResultsService) { }
 
@@ -38,8 +39,8 @@ export class SearchComponent implements OnInit {
   }
 
   selectResult(i:number) {
-    this.results = this.results.filter(
-                      result=>result.title.toLowerCase().includes(this.results[i].title.toLowerCase())
-                    )
+    this.resultsToCards = this.results.filter(
+                            result=>result.title.toLowerCase().includes(this.results[i].title.toLowerCase())
+                          )
   }
 }
