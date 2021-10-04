@@ -7,14 +7,22 @@
 		[(ngModel)]="search"
         [matAutocomplete]="auto"
         (keyup)="_search($event.keyCode)"
+        id="inputSearch"
     >
     <div class="containerSearchIcon">
-    	<mat-icon>search</mat-icon>
+		<mat-spinner diameter="20" color="accent" *ngIf="loading"></mat-spinner>
+    	<mat-icon style="margin-left: 15px;"> search</mat-icon>
     </div>
 	<mat-autocomplete #auto="matAutocomplete">
-		<mat-option *ngFor="let result of results" [value]="result">
-		  {{result}}
+		<mat-option 
+			*ngFor="let result of results; let i=index" 
+			[value]="result.title"
+			(click)="selectResult(i)"
+			(onSelectionChange)="selectResult(i)">
+		  {{result.title}}
 		</mat-option>
 	</mat-autocomplete>
 </div>
+
 <app-curve></app-curve>
+<app-cards [cards]="results"></app-cards>

@@ -7,19 +7,28 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { DialogComponent } from './cards/dialog/dialog.component';
+import { SearchComponent } from './search/search.component';
+import { CurveComponent } from './curve/curve.component'
+import { CardsComponent } from './cards/cards.component';
+
+
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { SearchComponent } from './search/search.component';
-import { CurveComponent } from './curve/curve.component'
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
-    CurveComponent
+    CurveComponent,
+    CardsComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +41,10 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     MatButtonModule,
     MatIconModule,
     MatInputModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatProgressSpinnerModule,
+    MatExpansionModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
